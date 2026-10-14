@@ -1,0 +1,120 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Book Passport & Journal</title>
+<style>
+:root{--bg:#f6f0e6;--fg:#2b2118;--card:#fffaf1;--mut:#7a6a58;--line:#e2d6c3;--ac:#8b4a2b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1712;--fg:#f1e7d8;--card:#2a221b;--mut:#b4a490;--line:#3d3228;--ac:#e0a074}}
+:root[data-theme="dark"]{--bg:#1c1712;--fg:#f1e7d8;--card:#2a221b;--mut:#b4a490;--line:#3d3228;--ac:#e0a074}
+*{box-sizing:border-box}html,body{margin:0}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--fg);font:15px/1.4 Georgia,'Times New Roman',serif;min-height:100vh}
+main{max-width:980px;margin:0 auto;padding:14px 14px 90px}
+h1,h2,h3{margin:.2em 0}button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:7px 12px}
+button.pri{background:var(--ac);color:var(--bg);border-color:var(--ac)}input,select,textarea{font:inherit;width:100%;padding:7px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg)}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;border:0;border-radius:0;background:none;padding:12px 4px;font-size:13px}nav button.on{color:var(--ac);font-weight:bold}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:18px}
+.cover{position:relative;aspect-ratio:2/3;border-radius:3px 8px 8px 3px;color:#fff;padding:10px 8px 10px 16px;display:flex;flex-direction:column;justify-content:space-between;font-size:13px;box-shadow:3px 4px 10px #0004;cursor:pointer}
+.cover:before{content:"";position:absolute;inset:0 auto 0 0;width:8px;background:linear-gradient(90deg,#0006,transparent)}
+.pin{display:inline-flex;align-items:center;gap:4px;padding:2px 9px 2px 4px;border-radius:99px;font:bold 10px/1 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#2b2118;background:radial-gradient(circle at 30% 25%,#fff9,transparent 45%),var(--c);border:2px solid #fff8;box-shadow:0 2px 4px #0005,inset 0 -2px 3px #0004;transform:rotate(-4deg)}
+.pins{position:absolute;right:-8px;top:-6px;display:flex;flex-direction:column;gap:3px;align-items:flex-end}
+.pb{height:6px;background:var(--line);border-radius:9px;overflow:hidden;margin-top:5px}.pb i{display:block;height:100%;background:var(--ac)}
+.row{display:flex;align-items:flex-end;gap:3px;padding:0 10px;min-height:170px;flex-wrap:nowrap;overflow-x:auto}
+.spine{flex:none;color:#fff;writing-mode:vertical-rl;font-size:12px;padding:8px 2px;border-radius:3px 3px 0 0;box-shadow:inset 3px 0 #fff3,1px 0 3px #0004;cursor:pointer;transition:.2s}.spine:hover{transform:translateY(-10px)}
+.plank{height:14px;background:linear-gradient(#a0693a,#5c3820);border-radius:2px;box-shadow:0 6px 8px #0005;margin-bottom:26px}
+.ov{position:fixed;inset:0;background:#000a;display:flex;align-items:flex-end;justify-content:center;z-index:9}
+.md{background:var(--bg);width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+@media(min-width:640px){.ov{align-items:center}.md{border-radius:18px}}
+label{display:block;font-size:12px;color:var(--mut);margin:8px 0 2px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.stats b{font-size:26px;display:block}
+.pass{max-width:300px;margin:14px auto;aspect-ratio:3/4;border-radius:8px 16px 16px 8px;padding:26px;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:10px;box-shadow:5px 6px 16px #0006;border:3px double var(--g);color:var(--g);background:radial-gradient(rgba(0,0,0,.22) 1px,transparent 1px) 0 0/5px 5px,var(--pc)}
+.stamps{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;background:#f4ead6;color:#3b2a1a;padding:16px;border-radius:12px;border:1px solid var(--line)}
+.stamp{border:3px double var(--sc);color:var(--sc);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font:bold 11px/1.2 system-ui,sans-serif;padding:10px;transform:rotate(var(--r));opacity:.9;text-transform:uppercase}
+.nbk{position:relative;aspect-ratio:3/4;border-radius:4px 10px 10px 4px;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px 10px 16px 28px;cursor:pointer;box-shadow:3px 4px 10px #0004;text-shadow:0 1px 2px #0008}
+.paper{width:100%;min-height:340px;line-height:28px;resize:vertical;background-color:var(--card)}
+.p-lined{background-image:repeating-linear-gradient(transparent 0 27px,var(--line) 27px 28px)}.p-dots{background-image:radial-gradient(var(--mut) 1px,transparent 1.5px);background-size:24px 24px}
+.p-grid{background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:24px 24px}
+.chart{display:flex;align-items:flex-end;gap:6px;height:90px}.chart div{flex:1;text-align:center;font-size:10px;color:var(--mut)}.chart i{display:block;background:var(--ac);border-radius:4px 4px 0 0;min-height:2px}
+
+.hd,.hero h2,.big{font-family:system-ui,-apple-system,'Segoe UI',sans-serif}.hd{font-size:26px;letter-spacing:-.02em}
+.hero{display:flex;gap:14px;align-items:center;padding:16px;border-radius:20px;margin:6px 0 14px;color:#fff;background:linear-gradient(135deg,#2f6f73,#1b3f5c);box-shadow:0 10px 24px #0003;cursor:pointer}
+.hero h2{margin:2px 0;font-size:20px}.hero .pb{background:#fff3}.hero .pb i{background:#ffd37a}
+.cover.sm{width:96px;flex:none;padding:8px 6px 8px 12px;font-size:11px}
+.seg{display:flex;background:var(--line);border-radius:12px;padding:3px;gap:3px;margin:8px 0}.seg button{flex:1;border:0;background:none;border-radius:9px;padding:8px 4px;font-family:system-ui,sans-serif;font-size:13px}.seg button.on{background:var(--card);font-weight:700;box-shadow:0 1px 4px #0002}
+.go{border-radius:99px;padding:10px 20px;margin-top:8px;font-family:system-ui,sans-serif;font-weight:700}.hero .go{background:#ffd37a;color:#2b2118;border-color:#ffd37a}
+.big{font-size:44px;font-weight:300;letter-spacing:.04em}.bk .t{font:600 13px/1.25 system-ui,sans-serif;margin-top:8px}.bk small{color:var(--mut)}
+.nt{border-left:3px solid var(--ac);padding:4px 10px;margin:6px 0;background:var(--card);border-radius:0 8px 8px 0}
+</style></head><body><main id="app"></main>
+<nav><button data-t="lib">📚 Biblioteca</button><button data-t="nb">📓 Cuadernos</button><button data-t="pp">🛂 Pasaporte</button><button data-t="goal">🎯 Metas</button></nav>
+<script>
+const CATS={novela:['📖','#e0b04f','Novela'],manga:['🎌','#ee6f86','Manga'],ensayo:['🖋️','#9aa8b8','Ensayo'],comic:['💥','#5bb3ea','Cómic'],poesia:['🪶','#ad8cf0','Poesía'],fantasia:['🐉','#4fc79b','Fantasía']};
+const today=()=>new Date().toISOString().slice(0,10),$=s=>document.querySelector(s),uid=()=>Math.random().toString(36).slice(2,9);
+const e=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let S=null;try{S=JSON.parse(localStorage.getItem('bpj'))}catch(x){}
+S=S||{tab:'lib',view:'covers',filter:'all',goal:12,log:{},days:[],pp:{name:'Lector/a',pc:'#6b2d2d',g:'#d4af37'},stamps:[],nbs:[],books:[
+{id:'a1',t:'Cien años de soledad',a:'Gabriel García Márquez',co:'Colombia',syn:'La saga de la familia Buendía en Macondo, entre lo real y lo mágico.',pages:471,cur:120,cats:['novela','fantasia'],color:'#b45309',done:0,mins:0},
+{id:'a2',t:'Un cuarto propio',a:'Virginia Woolf',co:'Reino Unido',syn:'Ensayo clásico sobre mujeres, dinero y escritura.',pages:120,cur:0,cats:['ensayo'],color:'#be185d',done:0,mins:0},
+{id:'a3',t:'Veinte poemas de amor',a:'Pablo Neruda',co:'Chile',syn:'Poemario esencial del siglo XX.',pages:96,cur:40,cats:['poesia'],color:'#0e7490',done:0,mins:0}]};
+let M=null,T={id:null,t0:0,p0:0,iv:null};S.books.forEach(b=>{b.st=b.st||(b.done?'done':b.cur>0?'read':'want');b.notes=b.notes||[];b.sess=b.sess||[]});
+const save=()=>{try{localStorage.setItem('bpj',JSON.stringify(S))}catch(x){}};
+const pin=c=>{const[x,col,l]=CATS[c];return `<span class="pin" style="--c:${col}">${x} ${l}</span>`};
+const bk=id=>S.books.find(b=>b.id==id),nb=id=>S.nbs.find(n=>n.id==id);
+const pct=b=>Math.round(b.cur/b.pages*100);
+function logPages(n){if(n>0){S.log[today()]=(S.log[today()]||0)+n;if(!S.days.includes(today()))S.days.push(today())}}
+function streak(){let n=0,d=new Date();while(S.days.includes(d.toISOString().slice(0,10))){n++;d.setDate(d.getDate()-1)}return n}
+function eta(b){if(b.st=='done')return'';const mn=b.sess.reduce((a,x)=>a+x.min,0),pg=b.sess.reduce((a,x)=>a+x.pg,0);if(mn<1||pg<1)return'';const r=(b.pages-b.cur)/(pg/mn);return ' · ~'+(r>=60?Math.floor(r/60)+' h '+Math.round(r%60)+' min':Math.round(r)+' min')+' restantes'}
+const stars=r=>r?'★'.repeat(Math.floor(r))+(r%1?'½':''):'',fmt=ms=>{const s=Math.floor(ms/1000);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+function vLib(){const q=(S.q||'').toLowerCase(),st=S.st||'read',cur=S.books.find(b=>b.st=='read'),n=k=>S.books.filter(b=>b.st==k).length,
+bs=S.books.filter(b=>b.st==st&&(S.filter=='all'||b.cats.includes(S.filter))&&(b.t+b.a).toLowerCase().includes(q));
+let h=`<div class="bar"><h1 class="hd">Mi biblioteca</h1><button class="pri" onclick="bookForm()">＋ Añadir libro</button></div>`;
+if(cur)h+=`<div class="hero" onclick="openBook('${cur.id}')"><div class="cover sm" style="background:${e(cur.color)}"><b>${e(cur.t)}</b></div><div style="flex:1;min-width:0"><small>LEYENDO AHORA</small><h2>${e(cur.t)}</h2><small>${e(cur.a)}</small><div class="pb"><i style="width:${pct(cur)}%"></i></div><small>Pág. ${cur.cur}/${cur.pages} · ${pct(cur)}%${eta(cur)}</small><br><button class="go" onclick="event.stopPropagation();tmr('${cur.id}')">${T.id==cur.id?'⏸ Detener':'▶ Empezar a leer'}</button></div></div>`;
+h+=`<div class="seg">${[['read','Leyendo'],['want','Por leer'],['done','Terminados']].map(([k,l])=>`<button class="${st==k?'on':''}" onclick="S.st='${k}';render()">${l} ${n(k)}</button>`).join('')}</div>
+<div class="bar"><input style="flex:1;min-width:150px" placeholder="🔍 Buscar título o autor" value="${e(S.q||'')}" onchange="S.q=this.value;render()"><span><button class="${S.view=='covers'?'pri':''}" onclick="S.view='covers';render()">▦</button> <button class="${S.view=='shelf'?'pri':''}" onclick="S.view='shelf';render()">📚</button></span></div>
+<div class="bar" style="justify-content:flex-start;gap:8px 6px"><button class="${S.filter=='all'?'pri':''}" onclick="S.filter='all';render()">Todos</button>${Object.keys(CATS).map(c=>`<span onclick="S.filter='${c}';render()" style="cursor:pointer;opacity:${S.filter==c?1:.65}">${pin(c)}</span>`).join('')}</div>`;
+if(!bs.length)return h+'<p style="color:var(--mut)">Aún no hay libros en esta sección.</p>';
+if(S.view=='covers')return h+`<div class="grid">${bs.map(b=>`<div class="bk"><div class="cover" style="background:${e(b.color)}" onclick="openBook('${b.id}')"><b>${e(b.t)}</b><small style="color:#fffc">${e(b.a)}</small><div class="pins">${b.cats.map(pin).join('')}</div></div><div class="t">${e(b.t)}</div><small>${stars(b.rt)||pct(b)+'%'}</small><div class="pb"><i style="width:${pct(b)}%"></i></div></div>`).join('')}</div>`;
+let rows='';for(let i=0;i<bs.length;i+=7)rows+=`<div class="row">${bs.slice(i,i+7).map((b,j)=>`<div class="spine" onclick="openBook('${b.id}')" style="background:${e(b.color)};height:${130+(b.pages*3+j*17)%60}px;width:${28+Math.min(b.pages/18,22)}px" title="${e(b.t)}">${e(b.t.slice(0,26))}</div>`).join('')}</div><div class="plank"></div>`;
+return h+rows}
+function vNb(){return `<div class="bar"><h1>Mis cuadernos</h1><button class="pri" onclick="nbForm()">＋ Nuevo cuaderno</button></div>${S.nbs.length?`<div class="grid">${S.nbs.map(n=>`<div><div class="nbk" onclick="M={nb:'${n.id}',p:0};render()" style="${nbStyle(n)}"><b>${e(n.name)}</b></div><small>${n.pages.length} hojas${n.bk&&bk(n.bk)?' · 🔗 '+e(bk(n.bk).t):''}</small></div>`).join('')}</div>`:'<p>Crea tu primer cuaderno: elige portada, lomo, tipo de hoja y vincúlalo a un libro.</p>'}`}
+function nbStyle(n){const c=n.color,sp=`box-shadow:inset 16px 0 0 ${n.spine},3px 4px 10px #0004;`;
+if(n.cover=='leather')return sp+`background:radial-gradient(rgba(0,0,0,.25) 1px,transparent 1px) 0 0/6px 6px,${c}`;
+if(n.cover=='art')return sp+`background:repeating-linear-gradient(45deg,transparent 0 12px,#fff5 12px 24px),${c}`;return sp+`background:${c}`}
+function vPp(){const p=S.pp;return `<div class="bar"><h1>Pasaporte del lector</h1><span><button onclick="ppForm()">🎨 Personalizar</button> <button onclick="stampForm()">＋ Sello manual</button></span></div>
+<div class="pass" style="--g:${e(p.g)};--pc:${e(p.pc)}"><div style="font-size:40px">🌍</div><small style="letter-spacing:.3em">PASAPORTE</small><h2>DEL LECTOR</h2><hr style="width:60%;border-color:var(--g)"><b>${e(p.name)}</b><small>${S.stamps.length} sellos</small></div>
+<h3>Mis sellos</h3>${S.stamps.length?`<div class="stamps">${S.stamps.map(s=>`<div class="stamp" style="--sc:${e(s.c)};--r:${s.r}deg">${CATS[s.cat]?CATS[s.cat][0]:'⭐'}<span>${e(s.t)}</span><span>${e(s.co||'')}</span><span>${e(s.d)}</span>${s.rt?'<span>'+'★'.repeat(s.rt)+'</span>':''}</div>`).join('')}</div>`:'<p>Completa un libro (✔) y se estampará un sello automáticamente.</p>'}`}
+function vGoal(){const dn=S.books.filter(b=>b.done).length,pg=S.books.reduce((a,b)=>a+b.cur,0),mn=S.books.reduce((a,b)=>a+(b.mins||0),0);
+const ds=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()-6+i);const k=d.toISOString().slice(0,10);return[k.slice(8),S.log[k]||0]}),mx=Math.max(1,...ds.map(x=>x[1]));
+return `<h1>Progreso y objetivos</h1><div class="stats"><div class="card"><b>🔥 ${streak()}</b>días de racha</div><div class="card"><b>${dn}</b>libros completados</div><div class="card"><b>${pg}</b>páginas leídas</div><div class="card"><b>${Math.round(mn)}</b>minutos</div></div>
+<div class="card" style="margin-top:12px"><label>Meta anual (libros)</label><input type="number" min="1" value="${S.goal}" onchange="S.goal=+this.value||1;save();render()"><div class="pb" style="height:12px"><i style="width:${Math.min(100,dn/S.goal*100)}%"></i></div><small>${dn} de ${S.goal} libros</small></div>
+<div class="card" style="margin-top:12px"><b>Páginas últimos 7 días</b><div class="chart">${ds.map(([d,v])=>`<div><i style="height:${v/mx*70}px"></i>${v}<br>${d}</div>`).join('')}</div></div>`}
+function modal(){if(!M)return'';
+if(M.bk){const b=bk(M.bk),run=T.id==b.id;return ov(`<div class="bar"><span></span><button onclick="closeM()">✕</button></div>
+<div style="display:flex;gap:14px"><div class="cover sm" style="background:${e(b.color)}"><b>${e(b.t)}</b></div><div><h2 class="hd" style="font-size:20px">${e(b.t)}</h2><div style="color:var(--mut)">${e(b.a)}${b.co?' · '+e(b.co):''}<br>${b.pages} págs.</div><div style="margin-top:6px">${b.cats.map(pin).join(' ')}</div></div></div>
+<div class="seg" style="margin:12px 0">${[['want','Por leer'],['read','Leyendo'],['done','Terminado']].map(([k,l])=>`<button class="${b.st==k?'on':''}" onclick="setSt('${b.id}','${k}')">${l}</button>`).join('')}</div>
+<div class="card" style="text-align:center"><div id="tm" class="big">${fmt(run?Date.now()-T.t0:0)}</div><button class="pri go" onclick="tmr('${b.id}')">${run?'⏸ Detener sesión':'▶ Empezar a leer'}</button>
+<label style="margin-top:12px">Página ${b.cur} de ${b.pages} · ${pct(b)}%${eta(b)}</label><input type="range" min="0" max="${b.pages}" value="${b.cur}" onchange="setPg('${b.id}',+this.value)"><div class="pb"><i style="width:${pct(b)}%"></i></div></div>
+<div class="card" style="margin-top:10px"><label>Calificación ${stars(b.rt)||'—'}</label><input type="range" min="0" max="5" step=".5" value="${b.rt||0}" onchange="bk('${b.id}').rt=+this.value;save();render()"></div>
+<p>${e(b.syn||'Sin sinopsis.')}</p><h3 class="hd" style="font-size:16px">💭 Pensamientos</h3><div class="bar"><input id="nt" placeholder="Añade un pensamiento o cita…" style="flex:1"><button onclick="addNote('${b.id}')">Añadir</button></div>
+${b.notes.map(x=>`<div class="nt"><small>pág. ${x.p} · ${x.d}</small><br>${e(x.t)}</div>`).join('')}<small style="color:var(--mut)">${b.sess.length} sesiones de lectura</small><br><button onclick="if(confirm('¿Eliminar libro?')){S.books=S.books.filter(x=>x.id!='${b.id}');save();closeM()}">🗑 Eliminar</button>`)}
+if(M.nb){const n=nb(M.nb);return ov(`<div class="bar"><h2>${e(n.name)}</h2><button onclick="closeM()">✕</button></div><textarea class="paper p-${n.paper}" oninput="nb('${n.id}').pages[${M.p}]=this.value;save()">${e(n.pages[M.p])}</textarea>
+<div class="bar"><button onclick="M.p=Math.max(0,M.p-1);render()">◀</button><small>Hoja ${M.p+1}/${n.pages.length}</small><button onclick="M.p=Math.min(${n.pages.length-1},M.p+1);render()">▶</button><button onclick="nb('${n.id}').pages.push('');M.p=${n.pages.length};save();render()">＋ Hoja</button></div>
+<div class="bar"><select onchange="nb('${n.id}').paper=this.value;save();render()">${[['lined','Rayada'],['dots','Punteada'],['grid','Cuadriculada'],['blank','Blanca']].map(([v,l])=>`<option value="${v}" ${n.paper==v?'selected':''}>${l}</option>`).join('')}</select><button onclick="if(confirm('¿Eliminar cuaderno?')){S.nbs=S.nbs.filter(x=>x.id!='${n.id}');save();closeM()}">🗑</button></div>`)}
+if(M.f){return ov(`<div class="bar"><h2>${M.f.title}</h2><button onclick="closeM()">✕</button></div>${M.f.fs.map(f=>`<label>${f[1]}</label>${f[2]=='select'?`<select id="f_${f[0]}">${f[3].map(o=>`<option value="${o[0]}">${o[1]}</option>`).join('')}</select>`:f[2]=='area'?`<textarea id="f_${f[0]}" rows="3"></textarea>`:`<input id="f_${f[0]}" type="${f[2]}" value="${e(f[3]||'')}">`}`).join('')}<br><button class="pri" onclick="subF()">Guardar</button>`)}}
+const ov=h=>`<div class="ov" onclick="if(event.target==this)closeM()"><div class="md">${h}</div></div>`;
+function closeM(){M=null;save();render()}
+function openBook(id){M={bk:id};render()}
+function form(title,fs,ok){M={f:{title,fs,ok}};render()}
+function subF(){const v={};M.f.fs.forEach(f=>v[f[0]]=$('#f_'+f[0]).value);const ok=M.f.ok;M=null;ok(v);save();render()}
+const catOpts=Object.keys(CATS).map(c=>[c,CATS[c][2]]);
+function bookForm(){form('Nuevo libro',[['t','Título','text'],['a','Autor','text'],['co','País del autor','text'],['pages','Páginas totales','number',200],['cat','Categoría (pin)','select',catOpts],['color','Color de portada','color','#7c3aed'],['syn','Sinopsis','area']],v=>{if(!v.t)return;S.books.push({id:uid(),t:v.t,a:v.a,co:v.co,syn:v.syn,pages:+v.pages||1,cur:0,cats:[v.cat],color:v.color,done:0,mins:0,st:'want',notes:[],sess:[]})})}
+function nbForm(){form('Nuevo cuaderno',[['name','Nombre','text'],['cover','Portada','select',[['leather','Cuero'],['pastel','Pastel'],['art','Ilustrada']]],['color','Color de portada','color','#8b4a2b'],['spine','Color del lomo','color','#4a2511'],['paper','Tipo de hoja','select',[['lined','Rayada'],['dots','Punteada (bullet journal)'],['grid','Cuadriculada'],['blank','Blanca']]],['bk','Vincular a libro','select',[['','— ninguno —'],...S.books.map(b=>[b.id,b.t])]]],v=>S.nbs.push({id:uid(),name:v.name||'Cuaderno',cover:v.cover,color:v.color,spine:v.spine,paper:v.paper,bk:v.bk,pages:['']}))}
+function ppForm(){form('Personalizar pasaporte',[['name','Nombre del lector','text',S.pp.name],['pc','Color de la portada','color',S.pp.pc],['g','Color del grabado','color',S.pp.g]],v=>S.pp={name:v.name,pc:v.pc,g:v.g})}
+function stampForm(){form('Sello manual',[['t','Hito o recuerdo','text'],['co','Lugar / nota','text'],['cat','Categoría','select',catOpts],['c','Color del sello','color','#a33b3b']],v=>addStamp({t:v.t||'Hito',co:v.co,cat:v.cat,c:v.c}))}
+function addStamp(s){S.stamps.push({...s,d:today(),r:Math.round(Math.random()*20-10)})}
+function setPg(id,v){const b=bk(id);logPages(v-b.cur);b.cur=v;if(b.st=='want'&&v>0)b.st='read';if(v>=b.pages&&!b.done)return doneBk(id);save();render()}
+function setSt(id,k){const b=bk(id);if(k=='done'){if(!b.done)return doneBk(id)}else{if(b.done){b.done=0;S.stamps=S.stamps.filter(x=>x.bid!=id)}b.st=k}save();render()}
+function addNote(id){const i=$('#nt');if(!i.value.trim())return;const b=bk(id);b.notes.unshift({p:b.cur,t:i.value.trim(),d:today()});save();render()}
+function doneBk(id){const b=bk(id);logPages(b.pages-b.cur);b.cur=b.pages;b.done=1;b.st='done';const c=CATS[b.cats[0]];addStamp({bid:id,t:b.t,co:b.co,cat:b.cats[0],c:c[1]==='#e0b04f'?'#b8862b':c[1]});form('¡Libro completado! Califícalo',[['r','Estrellas','select',[5,4.5,4,3.5,3,2,1].map(n=>[n,stars(n)])]],v=>{b.rt=+v.r;const s=S.stamps.find(x=>x.bid==id);if(s)s.rt=Math.floor(b.rt)})}
+function tmr(id){const b=bk(id);if(T.id==id){clearInterval(T.iv);const m=(Date.now()-T.t0)/60000;b.mins=(b.mins||0)+m;b.sess.push({d:today(),min:m,pg:Math.max(0,b.cur-T.p0)});if(!S.days.includes(today()))S.days.push(today());T.id=null;save()}else{if(T.id)tmr(T.id);if(b.st=='want')b.st='read';T={id,t0:Date.now(),p0:b.cur,iv:setInterval(()=>{const el=$('#tm');if(el)el.textContent=fmt(Date.now()-T.t0)},500)}}render()}
+function render(){document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t==S.tab));const ae=document.activeElement;$('#app').innerHTML=({lib:vLib,nb:vNb,pp:vPp,goal:vGoal})[S.tab]()+modal()}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{S.tab=b.dataset.t;M=null;save();render()});
+render();
+</script></body></html>
